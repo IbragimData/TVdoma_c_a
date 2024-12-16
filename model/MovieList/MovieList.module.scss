@@ -1,0 +1,67 @@
+.MovieList {
+  max-width: 1200px;
+  width: 100%;
+  margin: auto;
+  &__but {
+    border: none;
+    border-radius: 10px;
+    padding: 15px 25px;
+    background: linear-gradient(271deg, #00c2ff 0%, #00f0ff 100%);
+    font-weight: 400;
+    font-size: 16px;
+    color: #090909;
+    cursor: pointer;
+  }
+  &__contener{
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+
+  &__list{
+    display: flex;
+    flex-direction: column;
+    row-gap: 20px;
+    margin-top: 50px;
+  }
+}
+
+.form {
+  width: 100%;
+  max-width: 690px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  &__content {
+    display: flex;
+    align-items: center;
+    max-width: 571px;
+    width: 100%;
+    height: 41px;
+    column-gap: 20px;
+    padding: 8px 20px;
+    border-radius: 10px;
+    background: #383838;
+  }
+  &__input {
+    width: 100%;
+    background-color: transparent;
+
+    border: none;
+    outline: none;
+    font-weight: 500;
+    font-size: 16px;
+    color: #fff;
+  }
+  &__but {
+    border: none;
+    border-radius: 10px;
+    padding: 15px 25px;
+    background: linear-gradient(271deg, #00c2ff 0%, #00f0ff 100%);
+    font-weight: 400;
+    font-size: 16px;
+    color: #090909;
+    cursor: pointer;
+  }
+}

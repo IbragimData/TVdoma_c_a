@@ -1,0 +1,44 @@
+.Item {
+  max-width: 634px;
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  transition: 0.2s;
+  text-decoration: none;
+  &:hover{
+    transform: scale(1.02);
+  }
+  &__image {
+    border-radius: 20px;
+    width: 297px;
+    height: 150px;
+    background: #383838;
+  }
+  &__info {
+    width: 307px;
+    display: flex;
+    flex-direction: column;
+    row-gap: 20px;
+  }
+  &__title {
+    width: 100%;
+    overflow: hidden;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    font-weight: 600;
+    font-size: 20px;
+    color: #fff;
+  }
+  &__text {
+    height: 100px; /* Ограничиваем высоту */
+    overflow: hidden; /* Скрываем переполнение */
+    display: -webkit-box; /* Используем flexbox для управления строками */
+    -webkit-line-clamp: 5; /* Количество видимых строк (пример: 5 строк) */
+    -webkit-box-orient: vertical; /* Ориентация бокса */
+    text-overflow: ellipsis; /* Добавляем многоточие */
+    line-height: 1.2em; /* Высота строки (настройте по необходимости) */
+    
+    color: #a1a1a1;
+  }
+}
