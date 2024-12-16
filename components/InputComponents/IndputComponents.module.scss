@@ -1,0 +1,26 @@
+.InputComponents {
+  display: flex;
+  flex-direction: column;
+  max-width: 300px;
+  width: 100%;
+  row-gap: 15px;
+  &__label {
+    font-weight: 600;
+    font-size: 20px;
+    color: #fff;
+  }
+  &__input {
+    width: 100%;
+    border-radius: 10px;
+    padding: 10px 20px;
+    height: 39px;
+    border: none;
+
+    background: #383838;
+
+    font-weight: 500;
+    font-size: 14px;
+    color: #fff;
+    outline: none;
+  }
+}
