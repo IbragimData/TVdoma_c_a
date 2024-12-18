@@ -1,13 +1,20 @@
-'use client'
+"use client";
 import React, { useState } from "react";
 import s from "./UploadFile.module.scss";
+import CustomRoweBlueButtonComponents from "@/components/CustomRoweBlueButtonComponents/CustomRoweBlueButtonComponents";
+import CustomBlueButtonComponents from "@/components/CustomBlueButtonComponents/CustomBlueButtonComponents";
 
 interface UploadFileProps {
   title?: string;
   api?: string; // URL для загрузки
+  setUpload: (e: boolean) => void;
 }
 
-export function UploadFile({ title = "Upload a File", api }: UploadFileProps) {
+export function UploadFile({
+  title = "Upload a File",
+  api,
+  setUpload,
+}: UploadFileProps) {
   const [selectedFile, setSelectedFile] = useState<File | null>(null);
 
   const handleFileChange = (event: React.ChangeEvent<HTMLInputElement>) => {
@@ -39,12 +46,38 @@ export function UploadFile({ title = "Upload a File", api }: UploadFileProps) {
 
   return (
     <div className={s.UploadFile}>
-      <h1>{title}</h1>
-      <input type="file" onChange={handleFileChange} />
-      {selectedFile && <p>ok</p>}
-      <button onClick={handleUpload} disabled={!selectedFile}>
-        Upload
-      </button>
+      <h1 className={s.UploadFile__title}>{title}</h1>
+      <label className={s.UploadFile__content} htmlFor="uploadFile">
+        <p className={s.UploadFile__text}>Загрузить файл </p>
+        {selectedFile ? (
+          <img
+            className={s.UploadFile__image}
+            src="/images/svg/icon/file_activ.svg"
+            alt=""
+          />
+        ) : (
+          <img
+            className={s.UploadFile__image}
+            src="/images/svg/icon/file.svg"
+          />
+        )}
+      </label>
+      <input
+        style={{ display: "none" }}
+        onChange={handleFileChange}
+        type="file"
+        id="uploadFile"
+      />
+      <div className={s.UploadFile__but}>
+        <CustomRoweBlueButtonComponents
+          onClick={() => setUpload(false)}
+          label="Отмена"
+        />
+        <CustomBlueButtonComponents
+          onClick={() => console.log(api)}
+          label="Сохранить"
+        />
+      </div>
     </div>
   );
 }

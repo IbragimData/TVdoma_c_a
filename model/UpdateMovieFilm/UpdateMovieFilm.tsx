@@ -1,4 +1,4 @@
-'use client'
+"use client";
 import InputComponents from "@/components/InputComponents/IndputComponents";
 import s from "./UpdateMovieFilm.module.scss";
 import CustomTextareaComponent from "@/components/CustomTextareaComponent/CustomTextareaComponent";
@@ -15,7 +15,9 @@ export function UpdateMovieFilm() {
           <InputComponents label="Ограничение по возрасту" />
           <InputComponents label="Продолжительность фильма " />
           <CustomTextareaComponent label="Короткое Описание" />
-          <CustomInputFile title="Фильм" />
+          <CustomInputFile title="Фильм" api="/film" />
+          <CustomInputFile title="Баннер" api="banner" />
+          <CustomInputFile title="Название в фирменном стиле" api="/title" />
         </div>
         <div className={s.CreateMovie__block}>
           <InputComponents label="Оригинальное Название" />
@@ -23,6 +25,8 @@ export function UpdateMovieFilm() {
           <InputComponents label="Год выпуска" />
           <InputComponents label="Продолжительность трейлера " />
           <CustomTextareaComponent label="Описание" />
+          <CustomInputFile title="Постер" api="poster" />
+          <CustomInputFile title="Трейлер" api="trailer" />
         </div>
       </div>
       <div className={s.CreateMovie__but}>
