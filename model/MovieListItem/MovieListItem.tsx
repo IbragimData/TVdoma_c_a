@@ -3,7 +3,7 @@ import s from "./MovieListItem.module.scss";
 
 export function MovieListItem() {
   return (
-    <Link href={"/"} className={s.Item}>
+    <Link href={"/film/ibragim"} className={s.Item}>
       <div className={s.Item__image}>
       </div>
       <div className={s.Item__info}>

@@ -1,3 +1,4 @@
+import Link from "next/link";
 import { MovieListItem } from "../MovieListItem/MovieListItem";
 import s from "./MovieList.module.scss";
 
@@ -12,7 +13,7 @@ export function MovieList() {
             </div>
             <button className={s.form__but}>Найти</button>
         </form>
-        <button className={s.MovieList__but}>Добавить фильм</button>
+        <Link href={"/film"}  className={s.MovieList__but}>Добавить фильм</Link>
         <button className={s.MovieList__but}>Добавить сериал</button>
       </div>
       <div className={s.MovieList__list}>

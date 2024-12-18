@@ -4,7 +4,16 @@ import s from "./UpdateMovieFilm.module.scss";
 import CustomTextareaComponent from "@/components/CustomTextareaComponent/CustomTextareaComponent";
 import CustomBlueButtonComponents from "@/components/CustomBlueButtonComponents/CustomBlueButtonComponents";
 import CustomInputFile from "@/components/CustomInputFile/CustomInputFile";
+import CustomRoweBlueButtonComponents from "@/components/CustomRoweBlueButtonComponents/CustomRoweBlueButtonComponents";
+import CustomRedButtonComponents from "@/components/CustomRedButtonComponents/CustomRedButtonComponents";
+import { useState } from "react";
+import { DeletePanel } from "../DeletePanel/DeletePanel";
+import { CreateGenrePanel } from "../CreateGenrePanel";
+import CustomInputGenerComponents from "@/components/CustomInputGenerComponents/CustomInputGenerComponents";
 export function UpdateMovieFilm() {
+  const [deletePanel, setDeletePanel] = useState(false);
+  const [genrePanel, setGenrePanel] = useState(false);
+
   return (
     <div className={s.CreateMovie}>
       <h1 className={s.CreateMovie__title}>Добавить фильм</h1>
@@ -27,9 +36,24 @@ export function UpdateMovieFilm() {
           <CustomTextareaComponent label="Описание" />
           <CustomInputFile title="Постер" api="poster" />
           <CustomInputFile title="Трейлер" api="trailer" />
+          <CustomInputGenerComponents api="api/ibragim" />
         </div>
       </div>
+      {genrePanel && <CreateGenrePanel setGenrePanel={setGenrePanel} />}
+      {deletePanel && (
+        <DeletePanel
+          title="Удалить"
+          descriptions="Вы действительно хотите удалить данный контент "
+          setDeletePanel={setDeletePanel}
+          api="/delete-content"
+        />
+      )}
       <div className={s.CreateMovie__but}>
+        <CustomRedButtonComponents
+          onClick={() => setDeletePanel(true)}
+          label="Удалить"
+        />
+        <CustomRoweBlueButtonComponents label="Отмена" />
         <CustomBlueButtonComponents label="Сохранить" />
       </div>
     </div>
