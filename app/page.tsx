@@ -4,11 +4,10 @@ import { SerialList } from "@/model";
 import { SerialInputs } from "@/model";
 import { SerialSeries } from "@/model";
 
-
 export default function Home() {
   return (
     <div className="">
-      <Serial/>
+      <MovieList />
     </div>
   );
 }
