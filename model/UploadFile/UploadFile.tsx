@@ -24,22 +24,23 @@ export function UploadFile({
       setSelectedFile(event.target.files[0]);
     }
   };
-
   const handleUpload = async () => {
     if (!selectedFile || !api) return;
+
     const formData = new FormData();
     formData.append("file", selectedFile);
-    setLoading(true)
+    setLoading(true);
 
     try {
-      const response = await axios.post(api, formData);
+      const response = await axios.post(api, formData, {
+        timeout: 300000, // Тайм-аут через 5 минут (300000 миллисекунд)
+      });
       console.log(response);
-      setLoading(false)
-      
+      setLoading(false);
     } catch (error) {
-      console.log(error)
+      console.log(error);
       console.error("Error uploading file:", error);
-      setLoading(false)
+      setLoading(false);
     }
   };
 
