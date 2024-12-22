@@ -37,6 +37,7 @@ export function UploadFile({
       setLoading(false)
       
     } catch (error) {
+      console.log(error)
       console.error("Error uploading file:", error);
       setLoading(false)
     }
