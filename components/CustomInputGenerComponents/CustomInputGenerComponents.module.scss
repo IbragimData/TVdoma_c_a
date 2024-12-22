@@ -1,0 +1,23 @@
+.CustomInputFile {
+  display: flex;
+  flex-direction: column;
+  max-width: 300px;
+  width: 100%;
+  row-gap: 15px;
+  &__title {
+    font-weight: 600;
+    font-size: 25px;
+    color: #fff;
+  }
+  &__content {
+    width: 100%;
+    display: flex;
+    border-radius: 10px;
+    padding: 0 20px;
+    align-items: center;
+    justify-content: space-between;
+    background: #383838;
+    height: 65px;
+    cursor: pointer;
+  }
+}

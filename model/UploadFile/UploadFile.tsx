@@ -3,6 +3,7 @@ import React, { useState } from "react";
 import s from "./UploadFile.module.scss";
 import CustomRoweBlueButtonComponents from "@/components/CustomRoweBlueButtonComponents/CustomRoweBlueButtonComponents";
 import CustomBlueButtonComponents from "@/components/CustomBlueButtonComponents/CustomBlueButtonComponents";
+import axios from "axios";
 
 interface UploadFileProps {
   title?: string;
@@ -16,6 +17,7 @@ export function UploadFile({
   setUpload,
 }: UploadFileProps) {
   const [selectedFile, setSelectedFile] = useState<File | null>(null);
+  const [loading, setLoading] = useState(false);
 
   const handleFileChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     if (event.target.files && event.target.files[0]) {
@@ -27,41 +29,41 @@ export function UploadFile({
     if (!selectedFile || !api) return;
     const formData = new FormData();
     formData.append("file", selectedFile);
+    setLoading(true)
 
     try {
-      const response = await fetch(api, {
-        method: "POST",
-        body: formData,
-      });
-
-      if (response.ok) {
-        alert("File uploaded successfully!");
-      } else {
-        alert("Failed to upload file.");
-      }
+      const response = await axios.post(api, formData);
+      console.log(response);
+      setLoading(false)
+      
     } catch (error) {
       console.error("Error uploading file:", error);
+      setLoading(false)
     }
   };
 
   return (
     <div className={s.UploadFile}>
       <h1 className={s.UploadFile__title}>{title}</h1>
-      <label className={s.UploadFile__content} htmlFor="uploadFile">
-        <p className={s.UploadFile__text}>Загрузить файл </p>
-        {selectedFile ? (
-          <img
-            className={s.UploadFile__image}
-            src="/images/svg/icon/file_activ.svg"
-            alt=""
-          />
-        ) : (
-          <img
-            className={s.UploadFile__image}
-            src="/images/svg/icon/file.svg"
-          />
-        )}
-      </label>
+      {loading ? (
+        <h1>loading...</h1>
+      ) : (
+        <label className={s.UploadFile__content} htmlFor="uploadFile">
+          <p className={s.UploadFile__text}>Загрузить файл </p>
+          {selectedFile ? (
+            <img
+              className={s.UploadFile__image}
+              src="/images/svg/icon/file_activ.svg"
+              alt=""
+            />
+          ) : (
+            <img
+              className={s.UploadFile__image}
+              src="/images/svg/icon/file.svg"
+            />
+          )}
+        </label>
+      )}
       <input
         style={{ display: "none" }}
         onChange={handleFileChange}
@@ -73,10 +75,7 @@ export function UploadFile({
           onClick={() => setUpload(false)}
           label="Отмена"
         />
-        <CustomBlueButtonComponents
-          onClick={() => console.log(api)}
-          label="Сохранить"
-        />
+        <CustomBlueButtonComponents onClick={handleUpload} label="Сохранить" />
       </div>
     </div>
   );

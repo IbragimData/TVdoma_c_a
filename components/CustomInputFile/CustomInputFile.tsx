@@ -26,7 +26,7 @@ const CustomInputFile = ({ title, api }: InputProps) => {
       </div>
 
       {upload && (
-        <UploadFile setUpload={setUpload} title={title} api={"id/" + api} />
+        <UploadFile setUpload={setUpload} title={title} api={api} />
       )}
     </div>
   );
