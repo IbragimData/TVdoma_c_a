@@ -8,7 +8,6 @@ export default function Page({
   params: Promise<{ filmUrl: string }>;
 }) {
   const { filmUrl } = React.use(params);
-  console.log(filmUrl);
 
   return (
     <div>
