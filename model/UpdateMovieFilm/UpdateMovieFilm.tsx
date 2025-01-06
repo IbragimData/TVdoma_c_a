@@ -48,6 +48,7 @@ export function UpdateMovieFilm({ url }: { url: string }) {
     trailerDuration: 0,
     releaseDate: 0,
     url: "",
+    mainGenre: "",
   });
 
   // Функция для обработки изменения значений в форме
@@ -108,6 +109,13 @@ export function UpdateMovieFilm({ url }: { url: string }) {
                     value={formData.duration}
                     onChange={(e) =>
                       handleChange("duration", Number(e.target.value))
+                    }
+                  />
+                  <InputComponents
+                    label="Основной жанр"
+                    value={formData.mainGenre}
+                    onChange={(e) =>
+                      handleChange("mainGenre", e.target.value)
                     }
                   />
                   <CustomTextareaComponent
@@ -174,7 +182,7 @@ export function UpdateMovieFilm({ url }: { url: string }) {
                     title="Трейлер"
                     api={hostMedia + "api/content/" + formData.id + "/trailer"}
                   />
-                  <CustomInputGenerComponents api="" contentId={formData.id}  />
+                  <CustomInputGenerComponents api="" contentId={formData.id} />
                 </div>
               </div>
               {genrePanel && <CreateGenrePanel setGenrePanel={setGenrePanel} />}

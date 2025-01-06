@@ -22,6 +22,7 @@ export function CreateMovieFilm() {
     releaseDate: 0,
     url: "",
     type: "FILM", // Укажите значение по умолчанию для ContentType
+    mainGenre: "",
   });
 
   // Функция для обработки изменения значений в форме
@@ -38,7 +39,7 @@ export function CreateMovieFilm() {
       const response = await axios.post(hostMedia + "api/content", formData);
       console.log("Фильм успешно добавлен:", response.data);
       alert("Фильм успешно добавлен!");
-      location.replace("/film/" + formData.url)
+      location.replace("/film/" + formData.url);
     } catch (error) {
       console.error("Ошибка при добавлении фильма:", error);
       alert("Произошла ошибка при добавлении фильма.");
@@ -65,6 +66,12 @@ export function CreateMovieFilm() {
           <InputComponents
             label="Продолжительность фильма"
             onChange={(e) => handleChange("duration", Number(e.target.value))}
+          />
+
+          <InputComponents
+            label="Основной жанр"
+            value={formData.mainGenre}
+            onChange={(e) => handleChange("mainGenre", e.target.value)}
           />
           <CustomTextareaComponent
             label="Короткое Описание"
