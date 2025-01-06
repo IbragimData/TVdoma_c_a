@@ -1,3 +1,3 @@
-export const hostAuth = "http://90.156.225.139/auth/";
-export const hostMedia = "http://90.156.225.139/media/";
-export const host = "http://90.156.225.139:5005";
+export const hostAuth = "https://tvdoma.ru/api/auth/";
+export const hostMedia = "https://tvdoma.ru/api/media/";
+export const host = "http://77.232.135.101:5005";
